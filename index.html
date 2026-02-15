@@ -688,6 +688,9 @@
         </div>
     </footer>
 
+    <!-- Seed Data Script -->
+    <script src="seed-data.js"></script>
+
     <script>
         function createStars() {
             const starsBg = document.getElementById('starsBg');
@@ -710,21 +713,16 @@
         });
 
         // Load latest 4 products on homepage
-        async function loadHomeProducts() {
-            try {
-                // Try loading from Netlify
-                const response = await fetch('/.netlify/functions/products');
-                const data = await response.json();
-                
-                if (data.success && data.products.length > 0) {
-                    displayHomeProducts(data.products.slice(0, 4));
-                }
-            } catch (error) {
-                // Fallback to localStorage
-                const localProducts = JSON.parse(localStorage.getItem('astrodove_products')) || [];
-                if (localProducts.length > 0) {
-                    displayHomeProducts(localProducts.slice(0, 4));
-                }
+        function loadHomeProducts() {
+            // Initialize seed products if none exist
+            if (typeof initializeProducts === 'function') {
+                initializeProducts();
+            }
+            
+            // Load from localStorage
+            const localProducts = JSON.parse(localStorage.getItem('astrodove_products')) || [];
+            if (localProducts.length > 0) {
+                displayHomeProducts(localProducts.slice(0, 4));
             }
         }
 

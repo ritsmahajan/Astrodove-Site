@@ -376,9 +376,15 @@
         </div>
     </footer>
 
+    <!-- Seed Data Script -->
+    <script src="seed-data.js"></script>
+    
     <script>
-        // Load products from localStorage (added via admin panel)
+        // Load products from localStorage (added via admin panel or seed data)
         function loadAdminProducts() {
+            // Initialize products if none exist
+            initializeProducts();
+            
             const adminProducts = JSON.parse(localStorage.getItem('astrodove_products')) || [];
             const productsGrid = document.querySelector('.products-grid');
             
