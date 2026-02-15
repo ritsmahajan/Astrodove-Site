@@ -688,8 +688,8 @@
         </div>
     </footer>
 
-    <!-- Seed Data Script -->
-    <script src="seed-data.js"></script>
+    <!-- Airtable Configuration -->
+    <script src="config-airtable.js"></script>
 
     <script>
         function createStars() {
@@ -712,17 +712,18 @@
             if (!e.target.closest('header')) mainNav.classList.remove('active');
         });
 
-        // Load latest 4 products on homepage
-        function loadHomeProducts() {
-            // Initialize seed products if none exist
-            if (typeof initializeProducts === 'function') {
-                initializeProducts();
-            }
-            
-            // Load from localStorage
-            const localProducts = JSON.parse(localStorage.getItem('astrodove_products')) || [];
-            if (localProducts.length > 0) {
-                displayHomeProducts(localProducts.slice(0, 4));
+        // Load latest 4 products on homepage from Airtable
+        async function loadHomeProducts() {
+            try {
+                // Fetch products from Airtable
+                const products = await getProducts();
+                
+                if (products && products.length > 0) {
+                    // Show first 4 products
+                    displayHomeProducts(products.slice(0, 4));
+                }
+            } catch (error) {
+                console.error('Error loading products:', error);
             }
         }
 
