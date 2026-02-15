@@ -4,7 +4,7 @@
 // ⚠️ REPLACE THESE WITH YOUR ACTUAL AIRTABLE CREDENTIALS
 const AIRTABLE_CONFIG = {
     // Get from: Airtable Developer Hub → Personal Access Tokens
-    personalAccessToken: 'patlE2hyyMwbeePSA.fa87736f245cd0807f56c7823c1a31f9bdc60b30284acfbff5d8c871ad3ccbb5', // Starts with 'pat...'
+    personalAccessToken: 'patlE2hyyMwbeePSA.cb336a26b152ecf5c39e8186b397ee122f28294f2f3c5326d1369b845459446b', // Starts with 'pat...'
     
     // Get from: Airtable API docs → Your base
     baseId: 'appbcd6mLcGjNCCsv', // Starts with 'app...'
