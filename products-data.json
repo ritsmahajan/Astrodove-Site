@@ -3,12 +3,12 @@
     "id": 1,
     "name": "Opalite Bracelet",
     "price": "1100",
-    "category": "healing",
+    "category": "abundance",
     "badge": "BESTSELLER",
     "description": "Known for balancing emotions by fostering a deeper connection with one's inner self.",
     "benefits": [
       "Emotional Balance",
-      "Communication Enhancemen",
+      "Communication Enhancement",
       "Calming Energy",
       "Spiritual Awakening"
     ],
@@ -39,7 +39,7 @@
     "id": 3,
     "name":   "Five Line Tourmaline Necklacee",
     "price": "3000",
-    "category": "healing",
+    "category": "protection",
     "badge": "BESTSELLER",
     "description": "Elegant three-strand necklace featuring genuine Amethyst beads. This spiritual stone promotes inner peace, intuition, and emotional balance. The layered design creates a stunning look while keeping calming energy close to your heart.",
     "benefits": [
