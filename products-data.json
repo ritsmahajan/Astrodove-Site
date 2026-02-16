@@ -13,6 +13,8 @@
       "Promotes restful sleep"
     ],
     "image": "images/amethyst-necklace.jpeg",
+    "imageWidth": 800,
+    "imageHeight": 800
     "createdAt": "2026-02-16T00:00:00"
   }
 ]
