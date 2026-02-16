@@ -377,33 +377,50 @@
     </footer>
 
     <script>
+        console.log('🔍 Products.html script loaded');
+        
         // Load products from JSON file (no external API needed!)
         async function loadAdminProducts() {
+            console.log('🚀 loadAdminProducts() called');
             const productsGrid = document.querySelector('.products-grid');
+            console.log('📦 Products grid element:', productsGrid);
             
             // Show loading message
             productsGrid.innerHTML = '<p style="text-align: center; padding: 40px; color: var(--text-muted);">Loading products...</p>';
+            console.log('⏳ Loading message displayed');
             
             try {
+                const url = 'products-data.json?v=' + Date.now();
+                console.log('🌐 Fetching from:', url);
+                
                 // Fetch products from JSON file with cache buster
-                const response = await fetch('products-data.json?v=' + Date.now());
+                const response = await fetch(url);
+                console.log('📡 Response received:', response.status, response.ok);
                 
                 if (!response.ok) {
-                    throw new Error('Could not load products');
+                    throw new Error('Could not load products - Status: ' + response.status);
                 }
                 
                 const products = await response.json();
+                console.log('📊 Products loaded:', products);
+                console.log('📈 Number of products:', products.length);
                 
                 // Clear loading message
                 productsGrid.innerHTML = '';
+                console.log('🗑️ Loading message cleared');
                 
                 if (products.length === 0) {
+                    console.warn('⚠️ No products found!');
                     productsGrid.innerHTML = '<p style="text-align: center; padding: 40px; color: var(--text-muted);">No products found. Add products to products-data.json!</p>';
                     return;
                 }
                 
+                console.log('🎨 Starting to display products...');
+                
                 // Display products
-                products.forEach(product => {
+                products.forEach((product, index) => {
+                    console.log(`📦 Creating card for product ${index + 1}:`, product.name);
+                    
                     const productCard = document.createElement('div');
                     productCard.className = 'product-card';
                     productCard.setAttribute('data-category', product.category);
@@ -430,13 +447,17 @@
                     `;
                     
                     productsGrid.appendChild(productCard);
+                    console.log(`✅ Product card ${index + 1} added to grid`);
                 });
                 
                 console.log('✅ Displayed', products.length, 'products');
+                console.log('🎉 All products displayed successfully!');
                 
             } catch (error) {
-                console.error('Error loading products:', error);
-                productsGrid.innerHTML = '<p style="text-align: center; padding: 40px; color: var(--text-muted);">Error loading products. Please check console for details.</p>';
+                console.error('❌ ERROR loading products:', error);
+                console.error('❌ Error details:', error.message);
+                console.error('❌ Error stack:', error.stack);
+                productsGrid.innerHTML = '<p style="text-align: center; padding: 40px; color: var(--text-muted);">Error loading products. Check console (F12) for details.</p>';
             }
         }
 

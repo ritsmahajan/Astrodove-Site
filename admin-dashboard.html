@@ -371,6 +371,18 @@
                         After downloading, replace the old <code>products-data.json</code> file in your repository and push to GitHub. Cloudflare will auto-deploy the changes.
                     </p>
                 </div>
+                
+                <!-- Sync Section -->
+                <div style="margin-top: 20px; padding: 20px; background: #e3f2fd; border-radius: 10px; border: 2px solid #2196F3;">
+                    <h3 style="color: var(--text-dark); margin-bottom: 15px;">🔄 Sync Products</h3>
+                    <p style="margin-bottom: 15px;">After updating products-data.json in GitHub, reload products from the file:</p>
+                    <button onclick="reloadFromJSON()" class="btn btn-primary" style="background: #2196F3;">
+                        🔄 Reload from products-data.json
+                    </button>
+                    <p style="margin-top: 10px; font-size: 14px; color: var(--text-muted);">
+                        This will clear local changes and load products from the JSON file in your repository.
+                    </p>
+                </div>
             </div>
         </div>
     </div>
@@ -391,15 +403,33 @@
             window.location.href = 'admin-login.html';
         }
 
-        // Products storage using localStorage (JSON file alternative)
+        // Products storage
         let products = [];
         
-        // Load products from JSON file
+        // Load products from localStorage first, then fallback to JSON file
         async function loadProducts() {
+            // First check if we have products in localStorage (from admin edits)
+            const localProducts = localStorage.getItem('astrodove_products_backup');
+            
+            if (localProducts && localProducts !== '[]') {
+                try {
+                    products = JSON.parse(localProducts);
+                    console.log('✅ Loaded', products.length, 'products from localStorage (admin edits)');
+                    displayProducts();
+                    return;
+                } catch (error) {
+                    console.error('Error parsing localStorage:', error);
+                }
+            }
+            
+            // If no localStorage products, load from JSON file
             try {
                 const response = await fetch('products-data.json?v=' + Date.now());
                 if (response.ok) {
                     products = await response.json();
+                    console.log('✅ Loaded', products.length, 'products from JSON file');
+                    // Save to localStorage for future edits
+                    localStorage.setItem('astrodove_products_backup', JSON.stringify(products));
                     displayProducts();
                 }
             } catch (error) {
@@ -527,6 +557,30 @@
             link.click();
             URL.revokeObjectURL(url);
             showAlert('success', 'JSON file downloaded! Replace the old products-data.json file in your repository.');
+        }
+        
+        // Reload products from JSON file (clear localStorage)
+        async function reloadFromJSON() {
+            if (confirm('This will clear your local changes and reload from products-data.json in your repository. Continue?')) {
+                // Clear localStorage
+                localStorage.removeItem('astrodove_products_backup');
+                
+                // Fetch from JSON file
+                try {
+                    const response = await fetch('products-data.json?v=' + Date.now());
+                    if (response.ok) {
+                        products = await response.json();
+                        localStorage.setItem('astrodove_products_backup', JSON.stringify(products));
+                        displayProducts();
+                        showAlert('success', 'Products reloaded from JSON file! ✅');
+                    } else {
+                        showAlert('error', 'Could not load JSON file. Make sure products-data.json exists.');
+                    }
+                } catch (error) {
+                    console.error('Error:', error);
+                    showAlert('error', 'Error loading JSON file: ' + error.message);
+                }
+            }
         }
 
         // Edit product (simplified - reloads form)
