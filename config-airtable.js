@@ -4,10 +4,10 @@
 // ⚠️ REPLACE THESE WITH YOUR ACTUAL AIRTABLE CREDENTIALS
 const AIRTABLE_CONFIG = {
     // Get from: Airtable Developer Hub → Personal Access Tokens
-    personalAccessToken: 'patU73LkYofvMZnI1.9a656c43ba43fcee5497f4c6088f8efb5b23a7601e79254411976ed64b703039', // Starts with 'pat...'
+    personalAccessToken: 'YOUR_PERSONAL_ACCESS_TOKEN_HERE', // Starts with 'pat...'
     
     // Get from: Airtable API docs → Your base
-    baseId: 'appbcd6mLcGjNCCsv', // Starts with 'app...'
+    baseId: 'YOUR_BASE_ID_HERE', // Starts with 'app...'
     
     // Your table name (exactly as shown in Airtable)
     tableName: 'Products'

@@ -376,26 +376,29 @@
         </div>
     </footer>
 
-    <!-- Airtable Configuration -->
-    <script src="config-airtable.js"></script>
-    
     <script>
-        // Load products from Airtable
+        // Load products from JSON file (no external API needed!)
         async function loadAdminProducts() {
             const productsGrid = document.querySelector('.products-grid');
             
             // Show loading message
-            productsGrid.innerHTML = '<p style="text-align: center; padding: 40px; color: var(--text-muted);">Loading products from Airtable...</p>';
+            productsGrid.innerHTML = '<p style="text-align: center; padding: 40px; color: var(--text-muted);">Loading products...</p>';
             
             try {
-                // Fetch products from Airtable
-                const products = await getProducts();
+                // Fetch products from JSON file
+                const response = await fetch('products-data.json');
+                
+                if (!response.ok) {
+                    throw new Error('Could not load products');
+                }
+                
+                const products = await response.json();
                 
                 // Clear loading message
                 productsGrid.innerHTML = '';
                 
                 if (products.length === 0) {
-                    productsGrid.innerHTML = '<p style="text-align: center; padding: 40px; color: var(--text-muted);">No products found. Add products in your Airtable base!</p>';
+                    productsGrid.innerHTML = '<p style="text-align: center; padding: 40px; color: var(--text-muted);">No products found. Add products to products-data.json!</p>';
                     return;
                 }
                 
