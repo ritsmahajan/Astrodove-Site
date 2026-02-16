@@ -712,8 +712,8 @@
         // Load latest 4 products on homepage from JSON file
         async function loadHomeProducts() {
             try {
-                // Fetch products from JSON file
-                const response = await fetch('products-data.json');
+                // Fetch products from JSON file with cache buster
+                const response = await fetch('products-data.json?v=' + Date.now());
                 
                 if (response.ok) {
                     const products = await response.json();

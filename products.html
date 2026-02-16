@@ -385,8 +385,8 @@
             productsGrid.innerHTML = '<p style="text-align: center; padding: 40px; color: var(--text-muted);">Loading products...</p>';
             
             try {
-                // Fetch products from JSON file
-                const response = await fetch('products-data.json');
+                // Fetch products from JSON file with cache buster
+                const response = await fetch('products-data.json?v=' + Date.now());
                 
                 if (!response.ok) {
                     throw new Error('Could not load products');

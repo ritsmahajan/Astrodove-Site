@@ -397,7 +397,7 @@
         // Load products from JSON file
         async function loadProducts() {
             try {
-                const response = await fetch('products-data.json');
+                const response = await fetch('products-data.json?v=' + Date.now());
                 if (response.ok) {
                     products = await response.json();
                     displayProducts();
