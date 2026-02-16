@@ -37,8 +37,8 @@
   },
   {
     "id": 3,
-    "name": "Amethyst 3-Line Necklace",
-    "price": "2800",
+    "name":   "Five Line Tourmaline Necklacee",
+    "price": "3000",
     "category": "healing",
     "badge": "BESTSELLER",
     "description": "Elegant three-strand necklace featuring genuine Amethyst beads. This spiritual stone promotes inner peace, intuition, and emotional balance. The layered design creates a stunning look while keeping calming energy close to your heart.",
@@ -48,7 +48,7 @@
       "Opens third eye chakra",
       "Promotes restful sleep"
     ],
-    "image": "images/amethyst-necklace.jpeg",
+    "image": "images/5LineTourmalineNecklace.jpeg",
     "imageWidth": 400,
     "imageHeight": 400,
     "createdAt": "2026-02-16T00:00:00"
