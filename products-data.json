@@ -55,18 +55,18 @@
   },
   {
     "id": 4,
-    "name": "Amethyst 3-Line Necklace",
-    "price": "2800",
+    "name": "Peach Moonstone Bracelet",
+    "price": "1000",
     "category": "healing",
     "badge": "BESTSELLER",
-    "description": "Elegant three-strand necklace featuring genuine Amethyst beads. This spiritual stone promotes inner peace, intuition, and emotional balance. The layered design creates a stunning look while keeping calming energy close to your heart.",
+    "description": "Elegant bracelet linked to new beginnings, boosting intuition, and gently easing stress while fostering a sense of inner peace.",
     "benefits": [
-      "Enhances spiritual awareness",
+      "New Beginnings",
       "Calms anxiety and stress",
-      "Opens third eye chakra",
-      "Promotes restful sleep"
+      "boosts intuition",
+      "Fosters a sense of inner peace"
     ],
-    "image": "images/amethyst-necklace.jpeg",
+    "image": "images/PeachMoonstoneBracelet.jpeg",
     "imageWidth": 400,
     "imageHeight": 400,
     "createdAt": "2026-02-16T00:00:00"
