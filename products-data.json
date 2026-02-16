@@ -73,7 +73,7 @@
   },
   {
     "id": 5,
-    "name": "Amethyst 3-Line Necklace",
+    "name": "Rose Chalcedony Bracelet",
     "price": "2800",
     "category": "healing",
     "badge": "BESTSELLER",
@@ -84,7 +84,7 @@
       "Opens third eye chakra",
       "Promotes restful sleep"
     ],
-    "image": "images/amethyst-necklace.jpeg",
+    "image": "images/RoseChalcedonyBracelet.jpeg",
     "imageWidth": 400,
     "imageHeight": 400,
     "createdAt": "2026-02-16T00:00:00"
