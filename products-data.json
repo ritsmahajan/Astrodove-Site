@@ -6,7 +6,12 @@
     "category": "abundance",
     "badge": "NEW ARRIVAL",
     "description": "Stunning natural Pyrite cluster from Peru. Known as 'Fool's Gold', this powerful stone attracts wealth, abundance, and prosperity. The metallic golden crystals create a beautiful display piece while radiating protective and manifesting energy.",
-    "benefits": ["Attracts wealth and abundance", "Shields from negative energy", "Enhances willpower and confidence", "Stimulates creativity"],
+    "benefits": [
+      "Attracts wealth and abundance",
+      "Shields from negative energy",
+      "Enhances willpower and confidence",
+      "Stimulates creativity"
+    ],
     "image": "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Crect fill='%23DAA520' width='400' height='400'/%3E%3Ctext x='50%25' y='50%25' font-size='64' text-anchor='middle' dy='.3em'%3E✨%3C/text%3E%3Ctext x='50%25' y='65%25' font-size='20' text-anchor='middle' fill='%23654321'%3EPeru Pyrite%3C/text%3E%3C/svg%3E",
     "createdAt": "2026-02-16T00:00:00"
   },
@@ -17,7 +22,12 @@
     "category": "healing",
     "badge": "BESTSELLER",
     "description": "Elegant three-strand necklace featuring genuine Amethyst beads. This spiritual stone promotes inner peace, intuition, and emotional balance. The layered design creates a stunning look while keeping calming energy close to your heart.",
-    "benefits": ["Enhances spiritual awareness", "Calms anxiety and stress", "Opens third eye chakra", "Promotes restful sleep"],
+    "benefits": [
+      "Enhances spiritual awareness",
+      "Calms anxiety and stress",
+      "Opens third eye chakra",
+      "Promotes restful sleep"
+    ],
     "image": "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Crect fill='%239370DB' width='400' height='400'/%3E%3Ctext x='50%25' y='50%25' font-size='64' text-anchor='middle' dy='.3em'%3E💜%3C/text%3E%3Ctext x='50%25' y='65%25' font-size='18' text-anchor='middle' fill='white'%3EAmethyst%3C/text%3E%3C/svg%3E",
     "createdAt": "2026-02-16T00:00:00"
   },
@@ -28,7 +38,12 @@
     "category": "abundance",
     "badge": "POPULAR",
     "description": "Beautiful three-strand Citrine necklace radiating golden sunshine energy. Known as the 'Merchant's Stone', Citrine attracts prosperity, success, and joy. The triple-layer design amplifies manifestation power.",
-    "benefits": ["Attracts success and prosperity", "Increases self-confidence", "Manifests abundance", "Brings joy and positivity"],
+    "benefits": [
+      "Attracts success and prosperity",
+      "Increases self-confidence",
+      "Manifests abundance",
+      "Brings joy and positivity"
+    ],
     "image": "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Crect fill='%23FFD700' width='400' height='400'/%3E%3Ctext x='50%25' y='50%25' font-size='64' text-anchor='middle' dy='.3em'%3E✨%3C/text%3E%3Ctext x='50%25' y='65%25' font-size='18' text-anchor='middle' fill='%23654321'%3ECitrine%3C/text%3E%3C/svg%3E",
     "createdAt": "2026-02-16T00:00:00"
   },
@@ -39,7 +54,12 @@
     "category": "protection",
     "badge": "NEW ARRIVAL",
     "description": "Stylish Pyrite anklet combining fashion with powerful grounding energy. Pyrite shields against negative energy and EMF radiation while attracting abundance. Worn on the ankle, it grounds your energy while walking through life with confidence.",
-    "benefits": ["Grounding and protective", "Attracts wealth and opportunity", "Shields from negativity", "Boosts confidence"],
+    "benefits": [
+      "Grounding and protective",
+      "Attracts wealth and opportunity",
+      "Shields from negativity",
+      "Boosts confidence"
+    ],
     "image": "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Crect fill='%23B8860B' width='400' height='400'/%3E%3Ctext x='50%25' y='50%25' font-size='64' text-anchor='middle' dy='.3em'%3E⚡%3C/text%3E%3Ctext x='50%25' y='65%25' font-size='20' text-anchor='middle' fill='%23654321'%3EPyrite%3C/text%3E%3C/svg%3E",
     "createdAt": "2026-02-16T00:00:00"
   },
@@ -50,8 +70,28 @@
     "category": "love",
     "badge": "LIMITED",
     "description": "Exquisite faceted Peach Moonstone bracelet featuring unique cube-shaped beads. This feminine stone carries gentle energy of divine feminine, emotional healing, and new beginnings. The peachy glow brings warmth and comfort.",
-    "benefits": ["Supports emotional healing", "Enhances intuition and empathy", "Balances emotions", "Divine feminine energy"],
+    "benefits": [
+      "Supports emotional healing",
+      "Enhances intuition and empathy",
+      "Balances emotions",
+      "Divine feminine energy"
+    ],
     "image": "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Crect fill='%23FFDAB9' width='400' height='400'/%3E%3Ctext x='50%25' y='50%25' font-size='64' text-anchor='middle' dy='.3em'%3E🌙%3C/text%3E%3Ctext x='50%25' y='65%25' font-size='16' text-anchor='middle' fill='%23CD853F'%3EMoonstone%3C/text%3E%3C/svg%3E",
     "createdAt": "2026-02-16T00:00:00"
+  },
+  {
+    "id": 1771262502702,
+    "name": "Pyrite Anklet",
+    "price": "550",
+    "category": "abundance",
+    "badge": "BESTSELLER",
+    "description": "Beautiful jewelry piece Enhances confidence, provides abundance and protection.",
+    "benefits": [
+      "Abundance",
+      "protection",
+      "confidence"
+    ],
+    "image": "images/PyriteAnklets.jpg",
+    "createdAt": "2026-02-16T17:21:42.702Z"
   }
 ]
