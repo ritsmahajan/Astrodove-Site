@@ -37,7 +37,7 @@
   },
   {
     "id": 3,
-    "name":   "Five Line Tourmaline Necklacee",
+    "name": "Five Line Tourmaline Necklacee",
     "price": "3000",
     "category": "protection",
     "badge": "BESTSELLER",
@@ -135,9 +135,40 @@
     ],
     "image": "images/LavaBracelet.jpeg",
     "createdAt": "2026-02-17T08:38:09.208Z"
+  },
+  {
+    "id": 1771326334973,
+    "name": "Three line 8MM Genuine Brazilian Citrine Necklace-3180",
+    "price": "3180",
+    "category": "abundance",
+    "badge": "NEW ARRIVAL",
+    "description": "8MM Genuine Brazilian Citrine Necklace. Helps with prosperity, focus and positivity.",
+    "benefits": [
+      "Wealth & prosperity support",
+      "Manifestation",
+      "focus for business",
+      "career",
+      "and personal growth",
+      "Confidence & personal power",
+      "emotional optimism"
+    ],
+    "image": "images/3line8MMGenuineBrazilianCitrine Necklace-3180.jpeg",
+    "createdAt": "2026-02-17T11:05:34.973Z"
+  },
+  {
+    "id": 1771326636144,
+    "name": "Emerald Faceted Cabochon",
+    "price": "1000",
+    "category": "abundance",
+    "badge": "NEW ARRIVAL",
+    "description": "Can be used to gain higher intellectual qualities. It will  positively affect  your imagination power, creativity and intellectual level. It helps the native to innovate and ideate in an effective way. So, if you are a creative personality like writer, artist, media representative etc., wearing an emerald will be truly beneficial for you. Wearing an emerald stone is also effective for the students who are preparing for the competitive examination. Emeralds helps the native to promote financial growth. ",
+    "benefits": [
+      "Prosperity",
+      "Higher Intellect",
+      "Creativity",
+      "Communication"
+    ],
+    "image": "images/EmeraldFacetedCabochon-999.jpeg",
+    "createdAt": "2026-02-17T11:10:36.145Z"
   }
-  ]
-
-
-
- 
+]
