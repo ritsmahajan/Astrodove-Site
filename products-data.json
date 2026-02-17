@@ -1,5 +1,110 @@
 [
   {
+    "id": 1,
+    "name": "Opalite Bracelet",
+    "price": "1100",
+    "category": "abundance",
+    "badge": "BESTSELLER",
+    "description": "Known for balancing emotions by fostering a deeper connection with one's inner self.",
+    "benefits": [
+      "Emotional Balance",
+      "Communication Enhancement",
+      "Calming Energy",
+      "Spiritual Awakening"
+    ],
+    "image": "images/OpaliteBracelet.jpeg",
+    "imageWidth": 400,
+    "imageHeight": 400,
+    "createdAt": "2026-02-16T00:00:00"
+  },
+  {
+    "id": 2,
+    "name": "Amethyst 3-Line Necklace",
+    "price": "2000",
+    "category": "healing",
+    "badge": "BESTSELLER",
+    "description": "Elegant three-strand necklace featuring genuine Amethyst beads. This spiritual stone promotes inner peace, intuition, and emotional balance. The layered design creates a stunning look while keeping calming energy close to your heart.",
+    "benefits": [
+      "Enhances spiritual awareness",
+      "Calms anxiety and stress",
+      "Opens third eye chakra",
+      "Promotes restful sleep"
+    ],
+    "image": "images/amethyst-necklace.jpeg",
+    "imageWidth": 400,
+    "imageHeight": 400,
+    "createdAt": "2026-02-16T00:00:00"
+  },
+  {
+    "id": 3,
+    "name":   "Five Line Tourmaline Necklacee",
+    "price": "3000",
+    "category": "protection",
+    "badge": "BESTSELLER",
+    "description": "Elegant five-strand necklace featuring genuine tourmaline beads. This facilitates grounding energy, promoting a sense of stability and balance. It purifies and cleanses the energy around you, creating a more positive environment.",
+    "benefits": [
+      "Enhances spiritual awareness",
+      "Calms anxiety and stress",
+      "Opens third eye chakra",
+      "Promotes restful sleep"
+    ],
+    "image": "images/5LineTourmalineNecklace.jpeg",
+    "imageWidth": 400,
+    "imageHeight": 400,
+    "createdAt": "2026-02-16T00:00:00"
+  },
+  {
+    "id": 4,
+    "name": "Peach Moonstone Bracelet",
+    "price": "1000",
+    "category": "healing",
+    "badge": "BESTSELLER",
+    "description": "Elegant bracelet linked to new beginnings, boosting intuition, and gently easing stress while fostering a sense of inner peace.",
+    "benefits": [
+      "New Beginnings",
+      "Calms anxiety and stress",
+      "boosts intuition",
+      "Fosters a sense of inner peace"
+    ],
+    "image": "images/PeachMoonstoneBracelet.jpeg",
+    "imageWidth": 400,
+    "imageHeight": 400,
+    "createdAt": "2026-02-16T00:00:00"
+  },
+  {
+    "id": 5,
+    "name": "Rose Chalcedony Bracelet",
+    "price": "2800",
+    "category": "healing",
+    "badge": "BESTSELLER",
+    "description": "This beautiful crystal bracelet eases stress , opens heart chakra, incraeses creativity and emotioanl balance",
+    "benefits": [
+      "Enhances creativity",
+      "Calms anxiety and stress",
+      "Opens heart chakra",
+      "Promotes emotional balance"
+    ],
+    "image": "images/RoseChalcedonyBracelet.jpeg",
+    "imageWidth": 400,
+    "imageHeight": 400,
+    "createdAt": "2026-02-16T00:00:00"
+  },
+  {
+    "id": 1771317897800,
+    "name": "Rose Quartz Necklace ",
+    "price": "1350",
+    "category": "love",
+    "badge": "LIMITED",
+    "description": "This rose quartz necklace is believed to embody powerful healing qualities that may be beneficial both for physical and emotional health.",
+    "benefits": [
+      "peace",
+      "calm",
+      "self-love"
+    ],
+    "image": "images/RoseQuartzNecklace440.jpg",
+    "createdAt": "2026-02-17T08:44:57.800Z"
+  },
+  {
     "id": 1771242911480,
     "name": "Rutile Quartz Stretchable Bracelet",
     "price": "900",
@@ -16,51 +121,22 @@
     "createdAt": "2026-02-16T11:55:11.481Z"
   },
   {
-    "id": 1771264429122,
-    "name": "Peach Moonstone Faceted Bracelet",
-    "price": "1100",
-    "category": "love",
-    "badge": "LIMITED",
-    "description": "Exquisite faceted Peach Moonstone bracelet featuring unique cube-shaped beads. This feminine stone carries gentle energy of divine feminine, emotional healing, and new beginnings. ",
-    "benefits": [
-      "Supports emotional healing",
-      "Enhances intuition and empathy",
-      "Balances emotions",
-      "Divine feminine energy"
-    ],
-    "image": "images/PeachMoonstoneBracelet.jpeg",
-    "createdAt": "2026-02-16T17:53:49.122Z"
-  },
-  {
-    "id": 1771264686968,
-    "name": "Amethyst 3-Line Necklace",
-    "price": "2100",
-    "category": "healing",
-    "badge": "BESTSELLER",
-    "description": "Elegant three-strand necklace featuring genuine Amethyst beads. This spiritual stone promotes inner peace, intuition, and emotional balance. The layered design creates a stunning look while keeping calming energy close to your heart.",
-    "benefits": [
-      "Enhances spiritual awareness",
-      "Calms anxiety and stress",
-      "Opens third eye chakra",
-      "Promotes restful sleep"
-    ],
-    "image": "images/amethyst-necklace.jpeg",
-    "createdAt": "2026-02-16T17:58:06.968Z"
-  },
-  {
-    "id": 1771264723653,
-    "name": "Pyrite Anklet",
-    "price": "600",
+    "id": 1771317489208,
+    "name": "Lava Bracelet",
+    "price": "590",
     "category": "protection",
     "badge": "NEW ARRIVAL",
-    "description": "Stylish Pyrite anklet combining fashion with powerful grounding energy. Pyrite shields against negative energy and EMF radiation while attracting abundance. Worn on the ankle, it grounds your energy while walking through life with confidence.",
+    "description": "This bracelet brings the wearer's spiritual energy down to earth, promoting feelings of stability emotional balance, security, and peace. It also acts as a protective and calming stone .",
     "benefits": [
-      "Grounding and protective",
-      "Attracts wealth and opportunity",
-      "Shields from negativity",
-      "Boosts confidence"
+      "Strength",
+      "Grounding",
+      "Motivation",
+      "Protection"
     ],
-    "image": "images/PyriteAnklets.jpg",
-    "createdAt": "2026-02-16T17:58:43.653Z"
+    "image": "images/LavaBracelet.jpeg",
+    "createdAt": "2026-02-17T08:38:09.208Z"
   }
-]
+  ]
+
+
+ 
