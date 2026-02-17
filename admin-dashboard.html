@@ -278,6 +278,7 @@
         <div class="tabs">
             <button class="tab-btn active" onclick="switchTab('add')">➕ Add Product</button>
             <button class="tab-btn" onclick="switchTab('manage')">📦 Manage Products</button>
+            <button class="tab-btn" onclick="switchTab('reviews')">⭐ Reviews</button>
             <button class="tab-btn" onclick="window.open('products.html', '_blank')">👁️ View Store</button>
             <button class="tab-btn" onclick="logout()" style="background: #dc3545; color: white; border-color: #dc3545;">🚪 Logout</button>
         </div>
@@ -386,6 +387,74 @@
                 </div>
             </div>
         </div>
+
+        <!-- Reviews Tab -->
+        <div id="reviews-tab" class="tab-content">
+            <div class="form-section">
+                <h2>⭐ Client Reviews</h2>
+                <p style="color: var(--text-muted); margin-bottom: 2rem;">Add reviews from Google, WhatsApp or screenshots. Download JSON and upload to GitHub when done.</p>
+
+                <!-- Add Text Review -->
+                <div style="background: #f9f6f0; padding: 25px; border-radius: 12px; border: 1px solid var(--border-gold); margin-bottom: 2rem;">
+                    <h3 style="margin-bottom: 1.5rem; color: var(--text-dark);">📝 Add Text Review</h3>
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem;">
+                        <div>
+                            <label style="display: block; margin-bottom: 5px; font-weight: 600;">Customer Name *</label>
+                            <input type="text" id="reviewName" placeholder="e.g., Priya S." style="width: 100%; padding: 10px; border: 1px solid var(--border-gold); border-radius: 8px; font-size: 1rem;">
+                        </div>
+                        <div>
+                            <label style="display: block; margin-bottom: 5px; font-weight: 600;">Source</label>
+                            <select id="reviewSource" style="width: 100%; padding: 10px; border: 1px solid var(--border-gold); border-radius: 8px; font-size: 1rem;">
+                                <option>Google Review</option>
+                                <option>WhatsApp Review</option>
+                                <option>Instagram Review</option>
+                                <option>Direct Message</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div style="margin-bottom: 1rem;">
+                        <label style="display: block; margin-bottom: 5px; font-weight: 600;">Rating</label>
+                        <select id="reviewRating" style="width: 100%; padding: 10px; border: 1px solid var(--border-gold); border-radius: 8px; font-size: 1rem;">
+                            <option value="5">★★★★★ (5 stars)</option>
+                            <option value="4">★★★★☆ (4 stars)</option>
+                            <option value="3">★★★☆☆ (3 stars)</option>
+                        </select>
+                    </div>
+                    <div style="margin-bottom: 1rem;">
+                        <label style="display: block; margin-bottom: 5px; font-weight: 600;">Review Text *</label>
+                        <textarea id="reviewText" rows="4" placeholder="Paste the customer's review text here..." style="width: 100%; padding: 10px; border: 1px solid var(--border-gold); border-radius: 8px; font-size: 1rem; resize: vertical;"></textarea>
+                    </div>
+                    <button onclick="addTextReview()" class="btn btn-primary">➕ Add Text Review</button>
+                </div>
+
+                <!-- Add Image Review -->
+                <div style="background: #f9f6f0; padding: 25px; border-radius: 12px; border: 1px solid var(--border-gold); margin-bottom: 2rem;">
+                    <h3 style="margin-bottom: 1.5rem; color: var(--text-dark);">📸 Add Screenshot Review</h3>
+                    <p style="color: var(--text-muted); margin-bottom: 1rem;">Upload a screenshot of a WhatsApp/Google review</p>
+                    <div style="margin-bottom: 1rem;">
+                        <label style="display: block; margin-bottom: 5px; font-weight: 600;">Review Screenshot URL</label>
+                        <input type="text" id="reviewImageURL" placeholder="e.g., images/reviews/google-review-1.jpg" style="width: 100%; padding: 10px; border: 1px solid var(--border-gold); border-radius: 8px; font-size: 1rem;">
+                        <small style="color: var(--text-muted);">Upload screenshot to GitHub images/reviews/ folder first</small>
+                    </div>
+                    <div style="margin-bottom: 1rem;">
+                        <label style="display: block; margin-bottom: 5px; font-weight: 600;">Caption (optional)</label>
+                        <input type="text" id="reviewCaption" placeholder="e.g., Google Review - 5 Stars" style="width: 100%; padding: 10px; border: 1px solid var(--border-gold); border-radius: 8px; font-size: 1rem;">
+                    </div>
+                    <button onclick="addImageReview()" class="btn btn-primary">➕ Add Screenshot Review</button>
+                </div>
+
+                <!-- Reviews List -->
+                <h3 style="margin-bottom: 1rem;">Current Reviews (<span id="reviewCount">0</span>)</h3>
+                <div id="reviewsList" style="margin-bottom: 2rem;"></div>
+
+                <!-- Download Reviews JSON -->
+                <div id="reviewsDownloadSection" style="display: none; padding: 20px; background: #fff3cd; border-radius: 10px; border: 2px solid var(--accent-gold);">
+                    <h3 style="margin-bottom: 15px;">📥 Update Reviews on Website</h3>
+                    <p style="margin-bottom: 15px;">Download and replace <code>reviews-data.json</code> in your GitHub repository.</p>
+                    <button onclick="downloadReviewsJSON()" class="btn btn-primary">💾 Download reviews-data.json</button>
+                </div>
+            </div>
+        </div>
     </div>
 
     <script>
@@ -452,10 +521,113 @@
             event.target.classList.add('active');
             document.getElementById(tab + '-tab').classList.add('active');
 
-            if (tab === 'manage') {
-                displayProducts();
+            if (tab === 'manage') displayProducts();
+            if (tab === 'reviews') displayReviews();
+        }
+
+        // ── REVIEWS LOGIC ──────────────────────────────────────
+
+        let reviews = JSON.parse(localStorage.getItem('astrodove_reviews') || '[]');
+
+        // Load existing reviews from JSON file on first load
+        async function loadReviewsFromFile() {
+            if (reviews.length > 0) return; // Already have local reviews
+            try {
+                const response = await fetch('reviews-data.json?v=' + Date.now());
+                if (response.ok) {
+                    reviews = await response.json();
+                    localStorage.setItem('astrodove_reviews', JSON.stringify(reviews));
+                }
+            } catch (e) {}
+        }
+
+        function addTextReview() {
+            const name = document.getElementById('reviewName').value.trim();
+            const text = document.getElementById('reviewText').value.trim();
+            if (!name || !text) { showAlert('error', 'Name and review text are required!'); return; }
+
+            reviews.push({
+                id: Date.now(),
+                type: 'text',
+                name,
+                rating: parseInt(document.getElementById('reviewRating').value),
+                text,
+                source: document.getElementById('reviewSource').value
+            });
+
+            saveAndRefreshReviews();
+            document.getElementById('reviewName').value = '';
+            document.getElementById('reviewText').value = '';
+            showAlert('success', 'Review added! ✅');
+        }
+
+        function addImageReview() {
+            const image = document.getElementById('reviewImageURL').value.trim();
+            if (!image) { showAlert('error', 'Please enter an image URL!'); return; }
+
+            reviews.push({
+                id: Date.now(),
+                type: 'image',
+                image,
+                caption: document.getElementById('reviewCaption').value.trim()
+            });
+
+            saveAndRefreshReviews();
+            document.getElementById('reviewImageURL').value = '';
+            document.getElementById('reviewCaption').value = '';
+            showAlert('success', 'Screenshot review added! ✅');
+        }
+
+        function saveAndRefreshReviews() {
+            localStorage.setItem('astrodove_reviews', JSON.stringify(reviews));
+            displayReviews();
+            document.getElementById('reviewsDownloadSection').style.display = 'block';
+        }
+
+        function deleteReview(id) {
+            if (confirm('Delete this review?')) {
+                reviews = reviews.filter(r => r.id !== id);
+                saveAndRefreshReviews();
             }
         }
+
+        function displayReviews() {
+            const list = document.getElementById('reviewsList');
+            const count = document.getElementById('reviewCount');
+            if (!list) return;
+            count.textContent = reviews.length;
+
+            if (reviews.length === 0) {
+                list.innerHTML = '<p style="color: var(--text-muted); text-align: center; padding: 2rem;">No reviews yet. Add your first review above!</p>';
+                return;
+            }
+
+            list.innerHTML = reviews.map(r => `
+                <div style="background: white; padding: 15px 20px; border-radius: 10px; border: 1px solid var(--border-gold); margin-bottom: 1rem; display: flex; justify-content: space-between; align-items: flex-start; gap: 1rem;">
+                    <div style="flex: 1;">
+                        ${r.type === 'image'
+                            ? `<p>📸 <strong>Screenshot Review</strong></p><p style="font-size:0.9rem; color: var(--text-muted);">${r.image}</p>${r.caption ? `<p style="font-size:0.85rem;">${r.caption}</p>` : ''}`
+                            : `<p>${'★'.repeat(r.rating)}${'☆'.repeat(5 - r.rating)} <strong>${r.name}</strong> · ${r.source}</p><p style="font-style:italic; color: var(--text-muted); margin-top:5px;">"${r.text}"</p>`
+                        }
+                    </div>
+                    <button onclick="deleteReview(${r.id})" style="background: #dc3545; color: white; border: none; padding: 6px 12px; border-radius: 5px; cursor: pointer; white-space: nowrap;">🗑️ Delete</button>
+                </div>
+            `).join('');
+        }
+
+        function downloadReviewsJSON() {
+            const blob = new Blob([JSON.stringify(reviews, null, 2)], { type: 'application/json' });
+            const url = URL.createObjectURL(blob);
+            const link = document.createElement('a');
+            link.href = url;
+            link.download = 'reviews-data.json';
+            link.click();
+            URL.revokeObjectURL(url);
+            showAlert('success', 'reviews-data.json downloaded! Upload to GitHub to publish.');
+        }
+
+        // Load reviews on init
+        loadReviewsFromFile();
 
         // Preview image
         function previewImageFromURL() {

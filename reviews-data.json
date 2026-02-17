@@ -1,0 +1,26 @@
+[
+  {
+    "id": 1,
+    "type": "text",
+    "name": "Priya S.",
+    "rating": 5,
+    "text": "The Amethyst necklace is absolutely beautiful! I've been wearing it for 2 weeks and I feel so much calmer. Rits was so helpful in guiding me to the right crystal.",
+    "source": "Google Review"
+  },
+  {
+    "id": 2,
+    "type": "text",
+    "name": "Meera K.",
+    "rating": 5,
+    "text": "Got the Opalite bracelet and I love it! Great quality, fast delivery. Will definitely order again.",
+    "source": "WhatsApp Review"
+  },
+  {
+    "id": 3,
+    "type": "text",
+    "name": "Anjali R.",
+    "rating": 5,
+    "text": "The crystals are so authentic and the energy is amazing. The packaging was also beautiful. Highly recommend Astrodove!",
+    "source": "Google Review"
+  }
+]

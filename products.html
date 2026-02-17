@@ -138,7 +138,7 @@
             font-size: 0.8rem;
             letter-spacing: 1px;
             border-radius: 20px;
-            margin-bottom: 1rem;
+            margin-bottom: 1.5rem;
         }
         
         .product-info h3 {
@@ -255,6 +255,58 @@
             box-shadow: 0 15px 40px rgba(201, 160, 82, 0.5);
         }
         
+        /* Reviews Section */
+        .reviews-section {
+            padding: 5rem 5%;
+            background: linear-gradient(135deg, #faf8f3 0%, #f5f1e8 100%);
+        }
+        .reviews-container { max-width: 1400px; margin: 0 auto; }
+        .reviews-title {
+            font-family: 'Cinzel', serif;
+            font-size: 2.5rem;
+            color: var(--accent-gold);
+            text-align: center;
+            margin-bottom: 0.8rem;
+        }
+        .reviews-subtitle {
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 1.1rem;
+            margin-bottom: 3rem;
+        }
+        .reviews-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        .review-card {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: 0 4px 20px rgba(201, 160, 82, 0.1);
+            border: 1px solid var(--border-gold);
+            transition: transform 0.3s ease;
+        }
+        .review-card:hover { transform: translateY(-5px); }
+        .review-stars { color: #f4c430; font-size: 1.3rem; margin-bottom: 1rem; }
+        .review-text {
+            font-size: 1.05rem;
+            color: var(--text-muted);
+            line-height: 1.7;
+            font-style: italic;
+            margin-bottom: 1.5rem;
+        }
+        .review-author {
+            font-family: 'Cinzel', serif;
+            color: var(--text-dark);
+            font-size: 0.95rem;
+            font-weight: 600;
+        }
+        .review-source { font-size: 0.85rem; color: var(--accent-dove); margin-top: 0.3rem; }
+        .review-card.image-review { padding: 0; overflow: hidden; }
+        .review-card.image-review img { width: 100%; height: auto; display: block; border-radius: 15px; }
+        .review-caption { padding: 1rem 1.5rem; font-size: 0.9rem; color: var(--text-muted); text-align: center; }
+
         footer {
             padding: 3rem 5%;
             text-align: center;
@@ -354,6 +406,17 @@
 
         <div class="products-grid">
             <!-- Products will be loaded dynamically from admin panel -->
+        </div>
+    </section>
+
+    <!-- Client Reviews Section -->
+    <section class="reviews-section">
+        <div class="reviews-container">
+            <h2 class="reviews-title">What Our Clients Say</h2>
+            <p class="reviews-subtitle">Real experiences from our crystal family ✨</p>
+            <div class="reviews-grid" id="reviewsGrid">
+                <!-- Reviews loaded from reviews-data.json -->
+            </div>
         </div>
     </section>
 
@@ -474,7 +537,55 @@
         }
 
         // Load admin products on page load
-        window.addEventListener('DOMContentLoaded', loadAdminProducts);
+        // Load reviews
+        async function loadReviews() {
+            const reviewsGrid = document.getElementById('reviewsGrid');
+            if (!reviewsGrid) return;
+
+            try {
+                const response = await fetch('reviews-data.json?v=' + Date.now());
+                if (!response.ok) return; // Silently fail if no reviews file
+
+                const reviews = await response.json();
+                if (!reviews || reviews.length === 0) {
+                    reviewsGrid.closest('.reviews-section').style.display = 'none';
+                    return;
+                }
+
+                reviews.forEach(review => {
+                    const card = document.createElement('div');
+
+                    if (review.type === 'image') {
+                        card.className = 'review-card image-review';
+                        card.innerHTML = `
+                            <img src="${review.image}" alt="Customer Review">
+                            ${review.caption ? `<p class="review-caption">${review.caption}</p>` : ''}
+                        `;
+                    } else {
+                        card.className = 'review-card';
+                        const stars = '★'.repeat(review.rating || 5) + '☆'.repeat(5 - (review.rating || 5));
+                        card.innerHTML = `
+                            <div class="review-stars">${stars}</div>
+                            <p class="review-text">"${review.text}"</p>
+                            <p class="review-author">${review.name}</p>
+                            <p class="review-source">${review.source || ''}</p>
+                        `;
+                    }
+
+                    reviewsGrid.appendChild(card);
+                });
+
+            } catch (error) {
+                // No reviews file yet - hide section
+                const section = reviewsGrid.closest('.reviews-section');
+                if (section) section.style.display = 'none';
+            }
+        }
+
+        window.addEventListener('DOMContentLoaded', () => {
+            loadAdminProducts();
+            loadReviews();
+        });
 
         // Filter functionality
         const filterButtons = document.querySelectorAll('.filter-btn');
