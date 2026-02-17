@@ -30,6 +30,21 @@
         footer { padding: 3rem 5%; text-align: center; background: #8a7b6d; color: white; }
         .footer-links { display: flex; justify-content: center; gap: 2rem; margin-top: 1.5rem; }
         .footer-links a { color: #faf8f3; text-decoration: none; }
+
+        /* Reviews */
+        .reviews-section { padding: 5rem 5%; background: white; }
+        .reviews-section h2 { font-family: 'Cinzel', serif; font-size: 2.5rem; color: var(--accent-gold); text-align: center; margin-bottom: 0.8rem; }
+        .reviews-subtitle { text-align: center; color: #8a7b6d; font-size: 1.1rem; margin-bottom: 3rem; font-style: italic; }
+        .reviews-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 2rem; max-width: 1400px; margin: 0 auto; }
+        .review-card { background: #faf8f3; border-radius: 15px; padding: 2rem; border: 1px solid var(--border-gold); transition: transform 0.3s; }
+        .review-card:hover { transform: translateY(-5px); }
+        .review-stars { color: #f4c430; font-size: 1.2rem; margin-bottom: 0.8rem; }
+        .review-text { font-size: 1.05rem; color: #6b5d4f; line-height: 1.7; font-style: italic; margin-bottom: 1.2rem; }
+        .review-author { font-family: 'Cinzel', serif; color: var(--text-dark); font-size: 0.9rem; font-weight: 600; }
+        .review-source { font-size: 0.85rem; color: #8a7b6d; margin-top: 0.2rem; }
+        .review-card.image-review { padding: 0; overflow: hidden; }
+        .review-card.image-review img { width: 100%; height: auto; display: block; border-radius: 15px; }
+        .review-caption { padding: 1rem 1.5rem; font-size: 0.9rem; color: #6b5d4f; text-align: center; }
         
         @media (max-width: 768px) {
             header { padding: 1rem 3%; }
@@ -139,6 +154,13 @@
         <a href="contact.html" class="cta-button">Schedule Consultation</a>
     </section>
 
+    <!-- Client Reviews -->
+    <section class="reviews-section" id="reviewsSection">
+        <h2>What Our Clients Say</h2>
+        <p class="reviews-subtitle">Real experiences from our crystal & consultation family ✨</p>
+        <div class="reviews-grid" id="reviewsGrid"></div>
+    </section>
+
     <footer>
         <p>&copy; 2026 Astrodove. All rights reserved.</p>
         <p>📱 Call/WhatsApp: +91 7507303192</p>
@@ -150,5 +172,44 @@
             <a href="contact.html">Contact</a>
         </div>
     </footer>
+
+    <script>
+        async function loadReviews() {
+            const grid = document.getElementById('reviewsGrid');
+            const section = document.getElementById('reviewsSection');
+            try {
+                const response = await fetch('reviews-data.json?v=' + Date.now());
+                if (!response.ok) { section.style.display = 'none'; return; }
+
+                const reviews = await response.json();
+                if (!reviews || reviews.length === 0) { section.style.display = 'none'; return; }
+
+                reviews.forEach(review => {
+                    const card = document.createElement('div');
+                    if (review.type === 'image') {
+                        card.className = 'review-card image-review';
+                        card.innerHTML = `
+                            <img src="${review.image}" alt="Client Review">
+                            ${review.caption ? `<p class="review-caption">${review.caption}</p>` : ''}
+                        `;
+                    } else {
+                        card.className = 'review-card';
+                        const stars = '★'.repeat(review.rating || 5) + '☆'.repeat(5 - (review.rating || 5));
+                        card.innerHTML = `
+                            <div class="review-stars">${stars}</div>
+                            <p class="review-text">"${review.text}"</p>
+                            <p class="review-author">${review.name}</p>
+                            <p class="review-source">${review.source || ''}</p>
+                        `;
+                    }
+                    grid.appendChild(card);
+                });
+            } catch (e) {
+                section.style.display = 'none';
+            }
+        }
+
+        window.addEventListener('DOMContentLoaded', loadReviews);
+    </script>
 </body>
 </html>

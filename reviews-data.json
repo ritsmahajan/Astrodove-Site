@@ -4,7 +4,7 @@
     "type": "text",
     "name": "Priya S.",
     "rating": 5,
-    "text": "The Amethyst necklace is absolutely beautiful! I've been wearing it for 2 weeks and I feel so much calmer. Rits was so helpful in guiding me to the right crystal.",
+    "text": "The Amethyst necklace is absolutely beautiful! I've been wearing it for 2 weeks and feel so much calmer. Rits was so helpful in guiding me to the right crystal.",
     "source": "Google Review"
   },
   {
@@ -20,7 +20,15 @@
     "type": "text",
     "name": "Anjali R.",
     "rating": 5,
-    "text": "The crystals are so authentic and the energy is amazing. The packaging was also beautiful. Highly recommend Astrodove!",
+    "text": "Had a consultation with Rits about my career path. She was so intuitive and the crystals she recommended have really shifted my energy. Highly recommend!",
     "source": "Google Review"
+  },
+  {
+    "id": 4,
+    "type": "text",
+    "name": "Sneha M.",
+    "rating": 5,
+    "text": "The tarot reading was spot on! Rits has a gift. She understood my situation without me saying much and gave such clear guidance. Will definitely book again.",
+    "source": "WhatsApp Review"
   }
 ]
